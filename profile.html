@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Profile</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .profile-form-container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .preview-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .preview-container img {
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="profile-form-container">
+            <h2 class="text-center mb-4">Create Profile</h2>
+            <form id="profileForm">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" id="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="age">Age</label>
+                    <input type="number" class="form-control" id="age" required>
+                </div>
+                <div class="form-group">
+                    <label for="dob">Date of Birth</label>
+                    <input type="date" class="form-control" id="dob" required>
+                </div>
+                <div class="form-group">
+                    <label for="gmail">Gmail</label>
+                    <input type="email" class="form-control" id="gmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="linkedin">LinkedIn Profile</label>
+                    <input type="url" class="form-control" id="linkedin" placeholder="https://linkedin.com/in/your-profile">
+                </div>
+                <div class="form-group">
+                    <label for="profilePic">Upload Profile Picture</label>
+                    <input type="file" class="form-control-file" id="profilePic" accept="image/*" required>
+                </div>
+                <div class="preview-container">
+                    <img id="profilePicPreview" src="https://via.placeholder.com/150" alt="Profile Preview">
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Save Profile</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Preview uploaded profile picture
+        document.getElementById('profilePic').addEventListener('change', function (event) {
+            const reader = new FileReader();
+            reader.onload = function () {
+                document.getElementById('profilePicPreview').src = reader.result;
+            };
+            reader.readAsDataURL(event.target.files[0]);
+        });
+
+        // Save profile details in localStorage
+        document.getElementById('profileForm').addEventListener('submit', function (event) {
+            event.preventDefault();  // Prevent page reload
+
+            const name = document.getElementById('name').value;
+            const age = document.getElementById('age').value;
+            const dob = document.getElementById('dob').value;
+            const gmail = document.getElementById('gmail').value;
+            const linkedin = document.getElementById('linkedin').value;
+            const profilePic = document.getElementById('profilePicPreview').src;
+
+            const profileData = {
+                name,
+                age,
+                dob,
+                gmail,
+                linkedin,
+                profilePic
+            };
+
+            // Store data in localStorage
+            localStorage.setItem('profileData', JSON.stringify(profileData));
+            localStorage.setItem('profilePic', profilePic);  // For navbar icon
+
+            alert('Profile saved successfully!');
+            window.location.href = 'index.html';  // Redirect to home page
+        });
+    </script>
+</body>
+</html>

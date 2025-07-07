@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Code Editor</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="main1.css">
+    <style>
+        .editor-container {
+            margin: 20px auto;
+            width: 80%;
+            padding: 20px;
+            background-color: #f0f0f0;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .output-container {
+            margin-top: 15px;
+            padding: 10px;
+            background-color: #fff;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            position: relative;
+        }
+        .refresh-icon {
+            position: absolute;
+            top: 5px;
+            right: 10px;
+            cursor: pointer;
+        }
+        textarea {
+            width: 100%;
+            height: 200px;
+            resize: none;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Code Editor</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item"><a class="nav-link" href="#" onclick="loadEditor('C')">C</a></li>
+                <li class="nav-item"><a class="nav-link" href="#" onclick="loadEditor('C++')">C++</a></li>
+                <li class="nav-item"><a class="nav-link" href="#" onclick="loadEditor('Java')">Java</a></li>
+                <li class="nav-item"><a class="nav-link" href="#" onclick="loadEditor('Python')">Python</a></li>
+                <li class="nav-item"><a class="nav-link" href="#" onclick="loadEditor('JS')">JS</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div id="editorSection" class="editor-container" style="display: none;">
+        <h3 id="languageTitle">Language: C</h3>
+        <textarea id="codeEditor" placeholder="Write your code here..."></textarea>
+        <div class="d-flex justify-content-between">
+            <button class="btn btn-primary" onclick="runCode()">Run</button>
+            <button class="btn btn-secondary">Save</button>
+            <button class="btn btn-info">Share</button>
+         <a href="codeeditor.html">  <button class="btn btn-warning">Nova AI</button></a>
+        </div>
+
+        <div class="output-container mt-4">
+            <h5>Output</h5>
+            <pre id="outputBox">-- Output will appear here --</pre>
+            <i class="fas fa-sync-alt refresh-icon" onclick="clearOutput()"></i>
+        </div>
+    </div>
+
+    <script>
+        // Function to display the editor for the selected language
+        function loadEditor(language) {
+            document.getElementById('editorSection').style.display = 'block';
+            document.getElementById('languageTitle').innerText = 'Language: ' + language;
+            document.getElementById('codeEditor').value = '';  // Clear previous code
+            document.getElementById('outputBox').innerText = '-- Output will appear here --';  // Reset output
+        }
+
+        // Function to run the code (mock function)
+        function runCode() {
+            const code = document.getElementById('codeEditor').value;
+            if (code.trim() === '') {
+                alert('Please write some code to run!');
+                return;
+            }
+            // Simulate output (for real scenarios, you'd integrate a compiler or interpreter API)
+            document.getElementById('outputBox').innerText = 'Running...\n' + code;
+        }
+
+        // Function to clear the output box
+        function clearOutput() {
+            document.getElementById('outputBox').innerText = '-- Output will appear here --';
+        }
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

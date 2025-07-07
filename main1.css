@@ -1,0 +1,104 @@
+body {
+    background-color: black;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.editor-container {
+    width: 80%;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+    .editor-container {
+        width: 90%;
+    }
+}
+
+.carousel {
+    background-image: url("./coders.jpg");
+    background-color: black;
+     
+     position: relative; /* Position relative for absolute positioning of video */
+     height: 400px; /* Set a fixed height for the carousel */
+     overflow: hidden; /* Hide overflow */
+     
+ }
+
+.carousel-item {
+    position: relative;
+    height: 100%;
+}
+
+.carousel-item video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+.carousel-item img {
+    position: relative; /* Position images relatively */
+    z-index: 1; /* Bring images above the video */
+    height: 100%; /* Ensure images fill the carousel height */
+    object-fit: cover; /* Maintain aspect ratio */
+    transition: opacity 1s ease-in-out; /* Smooth transition for images */
+}
+
+.carousel-inner {
+    display: flex; /* Use flexbox for the inner items */
+    justify-content: center; /* Center the items */
+}
+
+.carousel-item {
+    width: 300px; /* Set the width of the card */
+    height: 400px; /* Set the height of the card */
+    margin: 0 auto; /* Center the card in the carousel */
+    border-radius: 15px; /* Rounded corners */
+    overflow: hidden; /* Ensure content doesn't overflow */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow for depth */
+    background-color: #fff; /* Background color of the card */
+}
+
+.carousel-item img {
+    width: 100%; /* Make the image responsive */
+    height: 100%; /* Ensure the image fills the card */
+    object-fit: cover; /* Maintain aspect ratio while covering the area */
+}
+.layer {
+    display: flex; /* Use Flexbox to arrange child elements in a row */
+    gap: 30px; 
+    margin:10px 20px 30px 10px;/* Add space between the child elements */
+    padding: 20px; /* Add padding around the child elements within the parent */
+    background-color: rgb(85, 126, 119);
+    border-color:solid white 3px; /* Optional: Add a background color to the parent for visibility */
+    border-radius: 10px; 
+    height: 400px;
+    /* Optional: Add border radius to the parent */
+}
+
+.lay {
+    width: 500px;
+    height: 350px;
+    border-radius: 10px;
+    border: 2px solid purple;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 200;
+    color: white;
+    padding: 20px;
+}
+
+.one, .two, .three {
+    background-color: black;
+    border-color: silver;
+}
+
+
